@@ -78,11 +78,5 @@ class MenuViewController: UIViewController {
         // TODO: no selection
         // showAlert("Order Fail", "No Orders")
         //performSegue(withIdentifier: "OrderViewController", sender: nil)
-        
-        viewModel.menuObservable.onNext([
-            Menu(id: 0, name: "곰튀김", price: Int.random(in: 100...1000), count: Int.random(in: 1...10)),
-            Menu(id: 1, name: "곰튀김", price: Int.random(in: 100...1000), count: Int.random(in: 1...10)),
-            Menu(id: 2, name: "곰튀김", price: Int.random(in: 100...1000), count: Int.random(in: 1...10))
-        ])
     }
 }

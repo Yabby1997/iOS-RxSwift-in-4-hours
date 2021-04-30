@@ -16,6 +16,7 @@ class MenuItemTableViewCell: UITableViewCell {
     var onChange: ((Int) -> Void)?
     
     @IBAction func onIncreaseCount() {
+        print("앙 기모띠")
         self.onChange?(+1)
     }
 
