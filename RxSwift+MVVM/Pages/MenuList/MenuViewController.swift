@@ -29,6 +29,10 @@ class MenuViewController: UIViewController {
                 cell.title.text = item.name
                 cell.price.text = "\(item.price)"
                 cell.count.text = "\(item.count)"
+                
+                cell.onChange = { [weak self] increase in
+                    self?.viewModel.changeCount(item: item, increase: increase)
+                }
             }
             .disposed(by: disposeBag)
         
@@ -67,7 +71,7 @@ class MenuViewController: UIViewController {
     @IBOutlet var totalPrice: UILabel!
 
     @IBAction func onClear() {
-        viewModel.menuObservable.onNext([])
+        viewModel.clearAllItemSelections()
     }
 
     @IBAction func onOrder(_ sender: UIButton) {
@@ -76,9 +80,9 @@ class MenuViewController: UIViewController {
         //performSegue(withIdentifier: "OrderViewController", sender: nil)
         
         viewModel.menuObservable.onNext([
-            Menu(name: "곰튀김", price: Int.random(in: 100...1000), count: Int.random(in: 1...10)),
-            Menu(name: "곰튀김", price: Int.random(in: 100...1000), count: Int.random(in: 1...10)),
-            Menu(name: "곰튀김", price: Int.random(in: 100...1000), count: Int.random(in: 1...10))
+            Menu(id: 0, name: "곰튀김", price: Int.random(in: 100...1000), count: Int.random(in: 1...10)),
+            Menu(id: 1, name: "곰튀김", price: Int.random(in: 100...1000), count: Int.random(in: 1...10)),
+            Menu(id: 2, name: "곰튀김", price: Int.random(in: 100...1000), count: Int.random(in: 1...10))
         ])
     }
 }
