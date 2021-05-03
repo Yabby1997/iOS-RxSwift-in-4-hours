@@ -35,10 +35,11 @@ class MenuListViewModel {
                 var menus: [Menu] = []
                 menuItems.enumerated().forEach { (index, item) in
                     let menu = Menu.fromMenuItems(id: index, item: item)
+                    print("menu id : \(menu.id)")
                     menus.append(menu)
                 }
                 return menus
-            }
+            }  
             .take(1)
             .bind(to: menuObservable)
     }
